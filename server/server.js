@@ -1,8 +1,6 @@
 const axios = require("axios");
 const express = require("express");
 
-const bodyParser = require("body-parser");
-
 const path = require("path");
 
 const app = express();
@@ -10,8 +8,6 @@ const port = process.env.PORT || 8000;
 const processArgs = process.argv.slice(2);
 
 app.use(express.static(path.join(__dirname, "/../public")));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/:word', function (req, res) {
   axios.get(`http://localhost:8001/${req.params.word}`)
